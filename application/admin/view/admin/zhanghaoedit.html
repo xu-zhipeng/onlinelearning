@@ -1,0 +1,175 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Online education</title>
+    <meta name="description" content="这是一个 index 页面">
+    <meta name="keywords" content="index">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <link rel="icon" type="image/png" href="__ADMIN__/assets/i/favicon.png">
+    <link rel="apple-touch-icon-precomposed" href="__ADMIN__/assets/i/app-icon72x72@2x.png">
+    <meta name="apple-mobile-web-app-title" content="Amaze UI" />
+    <link rel="stylesheet" href="__ADMIN__/assets/css/amazeui.min.css" />
+    <link rel="stylesheet" href="__ADMIN__/assets/css/admin.css">
+    <link rel="stylesheet" href="__ADMIN__/assets/css/app.css">
+</head>
+
+<body data-type="generalComponents">
+
+
+    {include file="public/top" /}
+
+
+
+
+
+
+
+    <div class="tpl-page-container tpl-page-header-fixed">
+
+        {include file="public/left" /}
+
+
+
+
+
+        <div class="tpl-content-wrapper">
+            <div class="tpl-content-page-title">
+                编辑账号
+            </div>
+            <ol class="am-breadcrumb">
+                <li><a href="{:url('index/index')}" class="am-icon-home">首页</a></li>
+                <li><a href="{:url('admin/zhanghaolist')}">账号管理</a></li>
+                <li class="am-active">编辑账号</li>
+            </ol>
+            <div class="tpl-portlet-components">
+                <div class="portlet-title">
+                    <div class="caption font-green bold">
+                        <span class="am-icon-code"></span> 表单
+                    </div>
+                    <div class="tpl-portlet-input tpl-fz-ml">
+                        <div class="portlet-input input-small input-inline">
+                            <div class="input-icon right">
+                                <i class="am-icon-search"></i>
+                                <input type="text" class="form-control form-control-solid" placeholder="搜索..."> </div>
+                        </div>
+                    </div>
+
+
+                </div>
+                <div class="tpl-block ">
+
+                    <div class="am-g tpl-amazeui-form">
+
+
+                        <div class="am-u-sm-12 am-u-md-9">
+                            <form class="am-form am-form-horizontal" action="" method="post">
+                                <div class="am-form-group">
+                                    <label for="name" class="am-u-sm-3 am-form-label">用户名 / UserName</label>
+                                    <div class="am-u-sm-9">
+                                        <input type="text" pattern="(^[a-zA-Z0-9_-]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$)|(^1[358][0123456789]\d{8}$)" id="name" name="name" value="{$vo.name}" placeholder="用户名 / UserName"required>
+                                        <small>输入登录邮箱或手机号</small>
+                                    </div>
+                                </div>
+
+                                <div class="am-form-group">
+                                    <label for="password" class="am-u-sm-3 am-form-label">密码 / PassWord</label>
+                                    <div class="am-u-sm-9">
+                                        <input type="text" pattern="|(^([a-zA-Z0-9\S]){6,16}$)" id="password" name="password" placeholder="密码 / PassWord">
+                                        <small>6-16位密码，区分大小写，不能用空格/若为空表示不修改密码</small>
+                                    </div>
+                                </div>
+
+                                <div class="am-form-group">
+                                    <label for="leibie" class="am-u-sm-3 am-form-label">类别</label>
+                                    <div class="am-u-sm-9">
+                                        <select required name="leibie" id="leibie" data-am-selected="{btnSize: 'sm',searchBox: 1,dropUp: 1}">
+                                          <option value="">所有类别</option>
+                                          <option value="系统管理员" {if condition="$vo.leibie eq '系统管理员'"}selected{/if} >系统管理员</option>
+                                          <option value="普通管理员"{if condition="$vo.leibie eq '普通管理员'"}selected{/if} >普通管理员</option>
+                                          <option value="老师" {if condition="$vo.leibie eq '老师'"}selected{/if} >老师</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <!-- <div class="am-form-group">
+                                    <label for="xingming" class="am-u-sm-3 am-form-label">姓名 / Name</label>
+                                    <div class="am-u-sm-9">
+                                        <input type="text" name="xingming" id="xingming" value="{$vo.xingming}" placeholder="姓名 / Name"required>
+                                        <small>输入你的名字，让我们记住你。</small>
+                                    </div>
+                                </div>
+
+                                <div class="am-form-group">
+                                    <label for="email" class="am-u-sm-3 am-form-label">电子邮件 / Email</label>
+                                    <div class="am-u-sm-9">
+                                        <input type="email" pattern="^[a-zA-Z0-9_-]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$" name="email" id="email" value="{$vo.email}" placeholder="输入你的电子邮件 / Email"required>
+                                        <small>邮箱你懂得...</small>
+                                    </div>
+                                </div>
+
+                                <div class="am-form-group">
+                                    <label for="dianhua" class="am-u-sm-3 am-form-label">电话 / Telephone</label>
+                                    <div class="am-u-sm-9">
+                                        <input type="tel" pattern="^1[358][0123456789]\d{8}$" name="dianhua" id="dianhua" value="{$vo.dianhua}" placeholder="输入你的电话号码 / Telephone"required>
+                                    </div>
+                                </div>
+
+                                <div class="am-form-group">
+                                    <label for="qq" class="am-u-sm-3 am-form-label">QQ</label>
+                                    <div class="am-u-sm-9">
+                                        <input type="text" pattern="[0-9]*" name="qq" id="qq" value="{$vo.qq}" placeholder="输入你的QQ号码"required>
+                                    </div>
+                                </div> -->
+
+                                <!-- <div class="am-form-group">
+                                    <label for="weibo" class="am-u-sm-3 am-form-label">微博 / Twitter</label>
+                                    <div class="am-u-sm-9">
+                                        <input type="text" name="weibo" id="weibo" value="{$vo.weibo}" placeholder="输入你的微博 / Twitter">
+                                    </div>
+                                </div>
+
+                                <div class="am-form-group">
+                                    <label for="jianjie" class="am-u-sm-3 am-form-label">简介 / Intro</label>
+                                    <div class="am-u-sm-9">
+                                        <textarea class="" rows="5" name="jianjie" id="jianjie" placeholder="输入个人简介">{$vo.jianjie}</textarea>
+                                        <small>250字以内写出你的一生...</small>
+                                    </div>
+                                </div> -->
+
+                                <div class="am-form-group">
+                                    <div class="am-u-sm-9 am-u-sm-push-3">
+                                        <input type="submit" class="am-btn am-btn-primary" value="保存修改">
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+
+
+
+
+
+
+
+
+
+        </div>
+
+    </div>
+
+
+    <script src="__ADMIN__/assets/js/jquery.min.js"></script>
+    <script src="__ADMIN__/assets/js/amazeui.min.js"></script>
+    <script src="__ADMIN__/assets/js/app.js"></script>
+</body>
+
+</html>

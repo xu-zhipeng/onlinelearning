@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>搜索页面</title>
+
+		<link href="__INDEX__/assets/css/amazeui.css" rel="stylesheet" type="text/css" />
+		<link href="__INDEX__/assets/css/admin.css" rel="stylesheet" type="text/css" />
+
+		<link href="__INDEX__/assets/css/demo.css" rel="stylesheet" type="text/css" />
+
+		<link href="__INDEX__/assets/css/seastyle.css" rel="stylesheet" type="text/css" />
+
+		<link type="text/css" href="__INDEX__/usefornew/css/classify.css" rel="stylesheet" />
+		<link type="text/css" href="__INDEX__/usefornew/css/problems.css" rel="stylesheet" />
+
+		<script type="text/javascript" src="__INDEX__/assets/js/jquery-1.7.min.js"></script>
+		<script type="text/javascript" src="__INDEX__/assets/js/script.js"></script>
+	</head>
+
+	<body>
+
+		<!--顶部导航条 -->
+		{include file="public/top" /}
+
+
+
+			<b class="line"></b>
+           <div class="search">
+			<div class="search-list">
+			<div class="nav-table">
+					   <div class="long-title"><span class="all-goods">全部分类</span></div>
+					   <div class="nav-cont">
+							<ul>
+								<li class="index"><a href="{:url('index/index')}">首页</a></li>
+								<li class="qc"><a href="#">小升初备战</a></li>
+								<li class="qc"><a href="#">中考备战</a></li>
+								<li class="qc"><a href="#">高考备战</a></li>
+								<li class="qc last"><a href="#">其他</a></li>
+							</ul>
+						    <div class="nav-extra">
+						    	<i class="am-icon-user-secret am-icon-md nav-user"></i><b></b>我的福利
+						    	<i class="am-icon-angle-right" style="padding-left: 10px;"></i>
+						    </div>
+						</div>
+			</div>
+
+
+					<div class="am-g am-g-fixed">
+						<div class="am-u-sm-12 am-u-md-12" style="margin-bottom:50px;">
+	                  	<div class="theme-popover">
+							<div class="searchAbout">
+								<span class="font-pale">搜索结果：</span>
+							</div>
+							<div class="introduceMain" style="margin-top: 20px;">
+							<div class="problems">
+								<hr class="problems-line" >
+
+									{volist name="searchlist" id="stem"}
+									{if condition="(max(strlen($stem.A),strlen($stem.B),strlen($stem.C),strlen($stem.D)) elt 15)"}
+									<div class="problems-content">
+										<div class="problems-stem">
+											{$stem.tmbh}{$stem.tg}
+										</div>
+										<table class="problems-table" cellpadding="0" cellspacing="0">
+											<tr>
+												<td class="problems-table-td">{$stem.A}</td><td class="problems-table-td">{$stem.B}</td><td class="problems-table-td">{$stem.C}</td><td class="problems-table-td">{$stem.D}</td>
+											</tr>
+										</table>
+										<hr class="problems-linebottom">
+									</div>
+									{elseif condition="(max(strlen($stem.A),strlen($stem.B),strlen($stem.C),strlen($stem.D)) gt 15) and (max(strlen($stem.A),strlen($stem.B),strlen($stem.C),strlen($stem.D)) elt 50) "}
+									<div class="problems-content">
+										<div class="problems-stem">
+											{$stem.tmbh}{$stem.tg}
+										</div>
+										<table class="problems-table" cellpadding="0" cellspacing="0">
+											<tr>
+												<td class="problems-table-td">{$stem.A}</td><td class="problems-table-td">{$stem.B}</td>
+											</tr>
+											<tr>
+												<td class="problems-table-td">{$stem.C}</td><td class="problems-table-td">{$stem.D}</td>
+											</tr>
+										</table>
+										<hr class="problems-linebottom">
+									</div>
+									{else/}
+									<div class="problems-content">
+										<div class="problems-stem">
+											{$stem.tmbh}{$stem.tg}
+										</div>
+										<table class="problems-table" cellpadding="0" cellspacing="0">
+											<tr>
+												<td class="problems-table-td">{$stem.A}</td>
+											</tr>
+											<tr>
+												<td class="problems-table-td">{$stem.B}</td>
+											</tr>
+											<tr>
+												<td class="problems-table-td">{$stem.C}</td>
+											</tr>
+											<tr>
+												<td class="problems-table-td">{$stem.D}</td>
+											</tr>
+										</table>
+										<hr class="problems-linebottom">
+									</div>
+									{/if}
+								{/volist}
+								<!--分页 -->
+								<div>
+									<!--分页 -->
+									{$searchlist->render()}
+									 <!-- <ul class="am-pagination am-pagination-right">
+                                        <li class="am-disabled"><a href="#">&laquo;</a></li>
+                                        <li class="am-active"><a href="#">1</a></li>
+                                        <li><a href="#">2</a></li>
+                                        <li><a href="#">3</a></li>
+                                        <li><a href="#">4</a></li>
+                                        <li><a href="#">5</a></li>
+                                        <li><a href="#">&raquo;</a></li>
+                                    </ul> -->
+								</div>
+							</div>
+							</div>
+						</div>
+
+							<div class="clear"></div>
+
+
+						</div>
+
+					<div class="clear"></div>
+					<!-- 底部 -->
+
+					{include file="public/bottom" /}
+					</div>
+			</div>
+		</div>
+			<!--菜单 -->
+			{include file="public/menu" /}
+
+
+	</body>
+
+</html>

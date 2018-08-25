@@ -1,0 +1,427 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>首页</title>
+
+		<link href="__INDEX__/assets/css/amazeui.css" rel="stylesheet" type="text/css" />
+		<link href="__INDEX__/assets/css/admin.css" rel="stylesheet" type="text/css" />
+
+		<link href="__INDEX__/assets/css/demo.css" rel="stylesheet" type="text/css" />
+
+		<link href="__INDEX__/assets/css/hmstyle.css" rel="stylesheet" type="text/css"/>
+		<link href="__INDEX__/assets/css/skin.css" rel="stylesheet" type="text/css" />
+		<script src="__INDEX__/assets/js/jquery.min.js"></script>
+		<script src="__INDEX__/assets/js/amazeui.min.js"></script>
+
+	</head>
+
+	<body>
+		<!-- 头部 -->
+		{include file="public/top" /}
+
+			<div class="banner">
+                      <!--轮播 -->
+						<div class="am-slider am-slider-default scoll" data-am-flexslider id="demo-slider-0">
+							<ul class="am-slides">
+								<li class="banner1"><a href="introduction.html"><img src="__INDEX__/assets/images/ad11.jpg" /></a></li>
+								<li class="banner2"><a><img src="__INDEX__/assets/images/ad22.jpg" /></a></li>
+								<li class="banner3"><a><img src="__INDEX__/assets/images/ad33.jpg" /></a></li>
+								<li class="banner4"><a><img src="__INDEX__/assets/images/ad44.jpg" /></a></li>
+
+							</ul>
+						</div>
+						<div class="clear"></div>
+			</div>
+			<div class="shopNav">
+				<div class="slideall">
+
+					   <div class="long-title"><span class="all-goods">全部分类</span></div>
+					   <div class="nav-cont">
+							<ul>
+								<li class="index"><a href="{:url('index/index')}">首页</a></li>
+								<li class="qc"><a href="#">小升初备战</a></li>
+								<li class="qc"><a href="#">中考备战</a></li>
+								<li class="qc"><a href="#">高考备战</a></li>
+								<li class="qc last"><a href="#">其他</a></li>
+							</ul>
+						</div>
+
+						<!--侧边导航 -->
+						<div id="nav" class="navfull">
+							<div class="area clearfix">
+
+
+								<div class="category-content" id="guide_2">
+									<div class="category" style="height: 432px;" >
+										<ul class="category-list" id="js_climit_li">
+											{volist name="kmlist" id="km"}
+											<li class="appliance js_toggle relative first">
+												<div class="category-info">
+													<h3 class="category-name b-category-name"><i><img src="__INDEX__/assets/images/cake.png"></i><a class="ml-22" title="{$km.kmmc}">{$km.kmmc}</a></h3>
+													<em>&gt;</em></div>
+												<div class="menu-item menu-in top">
+													<div class="area-in">
+														<div class="area-bg" >
+															<div class="menu-srot" style="overflow: auto;">
+
+																<div class="sort-side">
+																	{volist name="zsdlist" id="zsd"}
+																	{if condition="($zsd.kmbh eq $km.kmbh)"}
+																	<dl class="dl-sort">
+																		<dt><span title="{$zsd.zsdmc}">{$zsd.zsdmc}</span></dt>
+																		{volist name="zsdlist1" id="zsd1"}
+																		{if condition="($zsd1.sjzsd eq $zsd.zsdbh)"}
+																		<dd><a title="{$zsd1.zsdmc}" href="{:url('index/worklist',array('zsdbh'=>$zsd1.zsdbh,'kmbh'=>$zsd1.kmbh))}"><span>{$zsd1.zsdmc}</span></a></dd>
+																		{/if}
+																		{/volist}
+																	</dl>
+																	{/if}
+																	{/volist}
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+											<b class="arrow"></b>
+											</li>
+											{/volist}
+										</ul>
+									</div>
+								</div>
+
+							</div>
+						</div>
+
+
+						<!--轮播-->
+
+						<script type="text/javascript">
+							(function() {
+								$('.am-slider').flexslider();
+							});
+							$(document).ready(function() {
+								$("li").hover(function() {
+									$(".category-content .category-list li.first .menu-in").css("display", "none");
+									$(".category-content .category-list li.first").removeClass("hover");
+									$(this).addClass("hover");
+									$(this).children("div.menu-in").css("display", "block")
+								}, function() {
+									$(this).removeClass("hover")
+									$(this).children("div.menu-in").css("display", "none")
+								});
+							})
+						</script>
+
+
+
+
+
+					<!--走马灯 -->
+
+					<!-- <div class="marqueen">
+						<span class="marqueen-title">商城头条</span>
+						<div class="demo">
+
+							<ul>
+								<li class="title-first"><a target="_blank" href="#">
+									<img src="__INDEX__/assets/images/TJ2.jpg"></img>
+									<span>[特惠]</span>商城爆品1分秒
+								</a></li>
+								<li class="title-first"><a target="_blank" href="#">
+									<span>[公告]</span>商城与广州市签署战略合作协议
+								     <img src="__INDEX__/assets/images/TJ.jpg"></img>
+								     <p>XXXXXXXXXXXXXXXXXX</p>
+							    </a></li>
+
+								<div class="mod-vip">
+									<div class="m-baseinfo">
+										<a href="__INDEX__/assets/person/index.html">
+											<img src="__INDEX__/assets/images/getAvatar.do.jpg">
+										</a>
+										<em>
+											Hi,<span class="s-name">小叮当</span>
+											<a href="#"><p>点击更多优惠活动</p></a>
+										</em>
+									</div>
+									<div class="member-logout">
+										<a class="am-btn-warning btn" href="login.html">登录</a>
+										<a class="am-btn-warning btn" href="register.html">注册</a>
+									</div>
+									<div class="member-login">
+										<a href="#"><strong>0</strong>待收货</a>
+										<a href="#"><strong>0</strong>待发货</a>
+										<a href="#"><strong>0</strong>待付款</a>
+										<a href="#"><strong>0</strong>待评价</a>
+									</div>
+									<div class="clear"></div>
+								</div>
+
+								<li><a target="_blank" href="#"><span>[特惠]</span>洋河年末大促，低至两件五折</a></li>
+								<li><a target="_blank" href="#"><span>[公告]</span>华北、华中部分地区配送延迟</a></li>
+								<li><a target="_blank" href="#"><span>[特惠]</span>家电狂欢千亿礼券 买1送1！</a></li>
+
+							</ul>
+                        <div class="advTip"><img src="__INDEX__/assets/images/advTip.jpg"/></div>
+						</div>
+					</div> -->
+					<div class="clear"></div>
+				</div>
+				<script type="text/javascript">
+					if ($(window).width() < 640) {
+						function autoScroll(obj) {
+							$(obj).find("ul").animate({
+								marginTop: "-39px"
+							}, 500, function() {
+								$(this).css({
+									marginTop: "0px"
+								}).find("li:first").appendTo(this);
+							})
+						}
+						$(function() {
+							setInterval('autoScroll(".demo")', 3000);
+						})
+					}
+				</script>
+			</div>
+			<div class="shopMainbg">
+				<div class="shopMain" id="shopmain">
+
+					<!--今日推荐 -->
+
+					<div class="am-g am-g-fixed recommendation">
+						<div class="clock am-u-sm-3">
+							<img src="__INDEX__/assets/images/2016.png "></img>
+							<p>今日<br>推荐</p>
+						</div>
+						<div class="am-u-sm-4 am-u-lg-3 ">
+							<div class="info ">
+								<h3>题库新增</h3>
+								<h4>2017苏锡常镇四市统考</h4>
+							</div>
+							<div class="recommendationMain two">
+								<img src="__INDEX__/assets/images/suxichangzheng.jpg
+								"></img>
+							</div>
+						</div>
+
+					</div>
+					<div class="clear "></div>
+					<!--热门活动 -->
+
+					<div class="am-container activity ">
+						<div class="shopTitle ">
+							<h4>教辅</h4>
+							<h3>教辅推荐 优惠享不停 </h3>
+							<span class="more ">
+                              <a href="# ">全部材料<i class="am-icon-angle-right" style="padding-left:10px ;" ></i></a>
+                        </span>
+						</div>
+					  <div class="am-g am-g-fixed ">
+						<div class="am-u-sm-3 ">
+							<div class="icon-sale one "></div>
+								<h4>秒杀</h4>
+							<div class="activityMain ">
+								<img src="__INDEX__/assets/images/wanghouxiong.jpg "></img>
+							</div>
+							<div class="info ">
+								<h3>高考备战优选</h3>
+							</div>
+						</div>
+
+						<div class="am-u-sm-3 ">
+						  <div class="icon-sale two "></div>
+							<h4>特惠</h4>
+							<div class="activityMain ">
+								<img src="__INDEX__/assets/images/5nianzhongkao.jpg "></img>
+							</div>
+							<div class="info ">
+								<h3>中考备战优选</h3>
+							</div>
+						</div>
+
+						<div class="am-u-sm-3 ">
+							<div class="icon-sale three "></div>
+							<h4>团购</h4>
+							<div class="activityMain ">
+								<img src="__INDEX__/assets/images/5niangaokao.jpg "></img>
+							</div>
+							<div class="info ">
+								<h3>高考备战优选</h3>
+							</div>
+						</div>
+
+						<div class="am-u-sm-3 last ">
+							<div class="icon-sale "></div>
+							<h4>超值</h4>
+							<div class="activityMain ">
+								<img src="__INDEX__/assets/images/bishuati.jpg "></img>
+							</div>
+							<div class="info ">
+								<h3>高考备战分优选</h3>
+							</div>
+						</div>
+
+					  </div>
+                   </div>
+					<div class="clear "></div>
+
+
+                <div id="f1">
+					<!--甜点-->
+
+					<div class="am-container ">
+						<div class="shopTitle ">
+							<h4>精品课程</h4>
+							<h3>每一套视频都饱含老师的心血</h3>
+							<div class="today-brands ">
+								<a href="# ">数学</a>
+								<a href="# ">英语</a>
+								<a href="# ">语文 </a>
+								<a href="# ">历史</a>
+								<a href="# ">物理</a>
+								<a href="# ">化学</a>
+							</div>
+							<span class="more ">
+                    		<a href="# ">更多课程<i class="am-icon-angle-right" style="padding-left:10px ;" ></i></a>
+                        	</span>
+						</div>
+					</div>
+
+					<div class="am-g am-g-fixed floodFour">
+						<div class="am-u-sm-5 am-u-md-4 text-one list ">
+							<div class="word">
+								<a class="outer" href="#"><span class="inner"><b class="text">语文</b></span></a>
+								<a class="outer" href="#"><span class="inner"><b class="text">数学</b></span></a>
+								<a class="outer" href="#"><span class="inner"><b class="text">英语</b></span></a>
+								<a class="outer" href="#"><span class="inner"><b class="text">物理</b></span></a>
+								<a class="outer" href="#"><span class="inner"><b class="text">化学</b></span></a>
+								<a class="outer" href="#"><span class="inner"><b class="text">历史</b></span></a>
+							</div>
+							<a href="# ">
+								<div class="outer-con ">
+									<div class="title ">
+										资深教师
+									</div>
+									<div class="sub-title ">
+										开讲啦！
+									</div>
+								</div>
+                                  <img src="__INDEX__/assets/images/book.png " />
+							</a>
+							<div class="triangle-topright"></div>
+						</div>
+
+							<div class="am-u-sm-7 am-u-md-4 text-two sug">
+								<div class="outer-con ">
+									<div class="title ">
+										速记高中英语3500词汇
+									</div>
+									<div class="sub-title ">
+										¥13.8
+									</div>
+									<i class="am-icon-shopping-basket am-icon-md  seprate"></i>
+								</div>
+								<a href="# "><img src="__INDEX__/assets/images/yingyu1.png" ></a>
+							</div>
+
+							<div class="am-u-sm-7 am-u-md-4 text-two">
+								<div class="outer-con ">
+									<div class="title ">
+										高中数学必修四
+									</div>
+									<div class="sub-title ">
+										¥13.8
+									</div>
+									<i class="am-icon-shopping-basket am-icon-md  seprate"></i>
+								</div>
+								<a href="# "><img src="__INDEX__/assets/images/bixiu4.png" /></a>
+							</div>
+
+
+						<div class="am-u-sm-3 am-u-md-2 text-three big">
+							<div class="outer-con ">
+								<div class="title ">
+									高中数学必修一
+								</div>
+								<div class="sub-title ">
+									¥4.8
+								</div>
+								<i class="am-icon-shopping-basket am-icon-md  seprate"></i>
+							</div>
+							<a href="# "><img src="__INDEX__/assets/images/bixiu1.png" /></a>
+						</div>
+
+						<div class="am-u-sm-3 am-u-md-2 text-three sug">
+							<div class="outer-con ">
+								<div class="title ">
+									高中语文必修一全套教学视频
+								</div>
+								<div class="sub-title ">
+									¥4.8
+								</div>
+								<i class="am-icon-shopping-basket am-icon-md  seprate"></i>
+							</div>
+							<a href="# "><img src="__INDEX__/assets/images/yuwen1.png" /></a>
+						</div>
+
+						<div class="am-u-sm-3 am-u-md-2 text-three ">
+							<div class="outer-con ">
+								<div class="title ">
+									高中数学必修五
+								</div>
+								<div class="sub-title ">
+									¥4.8
+								</div>
+								<i class="am-icon-shopping-basket am-icon-md  seprate"></i>
+							</div>
+							<a href="# "><img src="__INDEX__/assets/images/bixiu5.png" /></a>
+						</div>
+
+						<div class="am-u-sm-3 am-u-md-2 text-three last big ">
+							<div class="outer-con ">
+								<div class="title ">
+									高中语文必修二全套教学视频
+								</div>
+								<div class="sub-title ">
+									¥4.8
+								</div>
+								<i class="am-icon-shopping-basket am-icon-md  seprate"></i>
+							</div>
+							<a href="# "><img src="__INDEX__/assets/images/yuwen2.png" /></a>
+						</div>
+
+					</div>
+                 	<div class="clear "></div>
+                </div>
+
+
+
+					<!-- 底部 -->
+
+					{include file="public/bottom" /}
+
+
+
+				</div>
+			</div>
+		<!--引导 -->
+		<!-- <div class="navCir">
+			<li class="active"><a href="home.html"><i class="am-icon-home "></i>首页</a></li>
+			<li><a href="sort.html"><i class="am-icon-list"></i>分类</a></li>
+			<li><a href="shopcart.html"><i class="am-icon-shopping-basket"></i>收藏夹</a></li>
+			<li><a href="__INDEX__/assets/person/index.html"><i class="am-icon-user"></i>我的</a></li>
+		</div> -->
+
+
+		<!--菜单 -->
+		{include file="public/menu" /}
+		<script>
+			window.jQuery || document.write('<script src="basic/js/jquery.min.js "><\/script>');
+		</script>
+		<script type="text/javascript " src="__INDEX__/assets/js/quick_links.js "></script>
+	</body>
+
+</html>

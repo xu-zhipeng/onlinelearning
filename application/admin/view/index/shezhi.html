@@ -1,0 +1,135 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Online education</title>
+    <meta name="description" content="这是一个 index 页面">
+    <meta name="keywords" content="index">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <link rel="icon" type="image/png" href="__ADMIN__/assets/i/favicon.png">
+    <link rel="apple-touch-icon-precomposed" href="__ADMIN__/assets/i/app-icon72x72@2x.png">
+    <meta name="apple-mobile-web-app-title" content="Amaze UI" />
+    <link rel="stylesheet" href="__ADMIN__/assets/css/amazeui.min.css" />
+    <link rel="stylesheet" href="__ADMIN__/assets/css/admin.css">
+    <link rel="stylesheet" href="__ADMIN__/assets/css/app.css">
+</head>
+
+<body data-type="generalComponents">
+
+
+    {include file="public/top" /}
+
+
+
+
+
+
+
+    <div class="tpl-page-container tpl-page-header-fixed">
+
+        {include file="public/left" /}
+
+
+
+
+
+        <div class="tpl-content-wrapper">
+            <div class="tpl-content-page-title">
+                编辑账号
+            </div>
+            <ol class="am-breadcrumb">
+                <li><a href="{:url('index/index')}" class="am-icon-home">首页</a></li>
+                <li><a href="#">设置</a></li>
+                <li class="am-active">修改密码</li>
+            </ol>
+            <div class="tpl-portlet-components">
+                <div class="portlet-title">
+                    <div class="caption font-green bold">
+                        <span class="am-icon-code"></span> 表单
+                    </div>
+                    <div class="tpl-portlet-input tpl-fz-ml">
+                        <div class="portlet-input input-small input-inline">
+                            <div class="input-icon right">
+                                <i class="am-icon-search"></i>
+                                <input type="text" class="form-control form-control-solid" placeholder="搜索..."> </div>
+                        </div>
+                    </div>
+
+
+                </div>
+                <div class="tpl-block ">
+
+                    <div class="am-g tpl-amazeui-form">
+
+
+                        <div class="am-u-sm-12 am-u-md-9">
+                            <form class="am-form am-form-horizontal" action="" method="post">
+                                <div class="am-form-group">
+                                    <label for="name" class="am-u-sm-3 am-form-label">用户名 / UserName</label>
+                                    <div class="am-u-sm-9">
+                                        <input type="text" pattern="(^[a-zA-Z0-9_-]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$)|(^1[358][0123456789]\d{8}$)" id="name" name="name" value="{$vo.name}" placeholder="用户名 / UserName"disabled>
+                                        <small>输入登录邮箱或手机号</small>
+                                    </div>
+                                </div>
+
+                                <div class="am-form-group">
+                                    <label for="oldpasswordpassword" class="am-u-sm-3 am-form-label">旧密码 / PassWord</label>
+                                    <div class="am-u-sm-9">
+                                        <input type="password" pattern="^([a-zA-Z0-9\S]){6,16}$" id="password" name="oldpassword" placeholder="密码 / PassWord"required>
+                                        <small>6-16位密码，区分大小写，不能用空格</small>
+                                    </div>
+                                </div>
+
+                                <div class="am-form-group">
+                                    <label for="password" class="am-u-sm-3 am-form-label">新密码 / PassWord</label>
+                                    <div class="am-u-sm-9">
+                                        <input type="password" pattern="^([a-zA-Z0-9\S]){6,16}$" id="password" name="password" placeholder="密码 / PassWord"required>
+                                        <small>6-16位密码，区分大小写，不能用空格</small>
+                                    </div>
+                                </div>
+
+                                <div class="am-form-group">
+                                    <label for="repassword" class="am-u-sm-3 am-form-label">确认密码 / PassWord</label>
+                                    <div class="am-u-sm-9">
+                                        <input type="password" pattern="^([a-zA-Z0-9\S]){6,16}$" id="repassword" name="repassword" placeholder="密码 / PassWord"required>
+
+                                        {$repasswordErr}
+                                    </div>
+                                </div>
+
+                                <div class="am-form-group">
+                                    <div class="am-u-sm-9 am-u-sm-push-3">
+                                        <input type="submit" class="am-btn am-btn-primary" value="保存修改">
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+
+
+
+
+
+
+
+
+
+        </div>
+
+    </div>
+
+
+    <script src="__ADMIN__/assets/js/jquery.min.js"></script>
+    <script src="__ADMIN__/assets/js/amazeui.min.js"></script>
+    <script src="__ADMIN__/assets/js/app.js"></script>
+</body>
+
+</html>

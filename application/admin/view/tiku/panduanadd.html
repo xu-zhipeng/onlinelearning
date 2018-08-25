@@ -1,0 +1,207 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Online education</title>
+    <meta name="description" content="这是一个 index 页面">
+    <meta name="keywords" content="index">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <link rel="icon" type="image/png" href="__ADMIN__/assets/i/favicon.png">
+    <link rel="apple-touch-icon-precomposed" href="__ADMIN__/assets/i/app-icon72x72@2x.png">
+    <meta name="apple-mobile-web-app-title" content="Amaze UI" />
+    <link rel="stylesheet" href="__ADMIN__/assets/css/amazeui.min.css" />
+    <link rel="stylesheet" href="__ADMIN__/assets/css/admin.css">
+    <link rel="stylesheet" href="__ADMIN__/assets/css/app.css">
+</head>
+
+<body data-type="generalComponents">
+
+
+    {include file="public/top" /}
+
+
+
+
+
+
+
+    <div class="tpl-page-container tpl-page-header-fixed">
+
+
+        {include file="public/left" /}
+
+
+
+
+
+        <div class="tpl-content-wrapper">
+            <div class="tpl-content-page-title">
+             添加判断题
+            </div>
+            <ol class="am-breadcrumb">
+              <li><a href="{:url('index/index')}" class="am-icon-home">首页</a></li>
+              <li><a href="{:url('tiku/panduan')}">题库管理</a></li>
+              <li class="am-active">添加判断题</li>
+            </ol>
+            <div class="tpl-portlet-components">
+              <div class="portlet-title">
+                <div class="caption font-green bold"> <span class="am-icon-code"></span> 表单 </div>
+                <div class="tpl-portlet-input tpl-fz-ml">
+                  <div class="portlet-input input-small input-inline">
+                    <div class="input-icon right"> <i class="am-icon-search"></i>
+                      <input type="text" class="form-control form-control-solid" placeholder="搜索...">
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="tpl-block ">
+                <div class="am-g tpl-amazeui-form">
+                  <div class="am-u-sm-12 am-u-md-9">
+                    <form class="am-form am-form-horizontal" role="form" action="" method="post">
+
+<!-- 四级知识点添加   start -->
+  <div class="am-form-group ">
+    <label for="zsd" class="am-u-sm-3 am-form-label">知识点 /<span class="tpl-form-line-small-title"></span> Knowledges</label>
+    <div  class="am-u-sm-9">
+        <div id="zsdnav" class="tpl-left-nav-list">
+            <ul class="tpl-left-nav-menu">
+                <li class="tpl-left-nav-item" style="background: white;">
+                    <a href="javascript:;" class="nav-link tpl-left-nav-link-list">
+                        <i class="am-icon-bars"></i>
+                        <span>所属知识点</span>
+                        <i class="am-icon-angle-right tpl-left-nav-more-ico am-fr am-margin-right"></i>
+                    </a>
+                    <ul class="tpl-left-nav-sub-menu">
+                    {volist name="kemu" id="v"}<!-- 科目start -->
+                        <li>
+    <!-- 科目名称 -->
+                            <a href="javascript:;" class="nav-link tpl-left-nav-link-list">
+                                <span>----</span>
+                                <i class="am-icon-angle-right"></i>
+                                <span>{$v.kmmc}&nbsp;&nbsp;({$v.kmjb})</span>
+                                <i class="am-icon-angle-right tpl-left-nav-more-ico am-fr am-margin-right"></i>
+                            </a>
+    <!-- 科目名称 -->
+                            <ul class="tpl-left-nav-sub-menu">
+                            {volist id='zsd' name='zhishidian'}<!-- 一级知识点start -->
+                            {if condition="($zsd.kmbh eq $v.kmbh) and ($zsd.sjzsd eq 0)"}
+                                <li>
+    <!-- 一级知识点名称 -->
+                                    <a href="javascript:;" class="nav-link tpl-left-nav-link-list">
+                                        <span>--------</span>
+                                        <i class="am-icon-angle-right"></i>
+                                        <span>{$zsd.zsdmc}</span>
+                                        <i class="am-icon-angle-right tpl-left-nav-more-ico am-fr am-margin-right"></i>
+                                    </a>
+    <!-- 一级知识点名称 -->
+                                    <ul class="tpl-left-nav-sub-menu">
+                                    {volist id='xzsd' name='zhishidian'}<!-- 二级知识点start -->
+                                        {if condition="($xzsd.kmbh eq $zsd.kmbh) and ($xzsd.sjzsd eq $zsd.zsdbh) and ($xzsd.zsdmc neq $zsd.zsdmc)"}
+                                            {if condition="($xzsd.zsdlb neq 0)"}
+                                                <li>
+    <!-- 二级知识点名称 -->
+                                                    <a href="javascript:;" class="nav-link tpl-left-nav-link-list">
+                                                        <span>------------</span>
+                                                        <i class="am-icon-angle-right"></i>
+                                                        <span>{$xzsd.zsdmc}</span>
+                                                        <i class="am-icon-angle-right tpl-left-nav-more-ico am-fr am-margin-right"></i>
+                                                    </a>
+    <!-- 二级知识点名称 -->
+                                                    <ul class="tpl-left-nav-sub-menu">
+                                                    {volist id='xxzsd' name='zhishidian'}<!-- 三级知识点start -->
+                                                    {if condition="($xxzsd.kmbh eq $xzsd.kmbh) and ($xxzsd.sjzsd eq $xzsd.zsdbh) and ($xxzsd.zsdmc neq $xzsd.zsdmc)"}
+                                                    {if condition="($xxzsd.zsdlb neq 0)"}
+                                                    {else /}
+    <!-- 三级知识点叶子节点 -->
+                                                    <li>
+                                                        <label class="am-checkbox am-secondary">
+                                                                          <input name="zsdbh" type="radio" value="{$xxzsd.zsdbh}" data-am-ucheck required>{$xxzsd.zsdmc}
+                                                        </label>
+                                                    </li>
+    <!-- 三级知识点叶子节点 -->
+                                                    {/if}
+                                                    {/if}
+                                                    {/volist}<!-- 三级知识点start -->
+                                                    </ul>
+                                                </li>
+                                            {else /}
+    <!-- 二级知识点叶子节点 -->
+                                                <li>
+                                                    <label class="am-checkbox am-secondary">
+                                                                      <input name="zsdbh" type="radio" value="{$xzsd.zsdbh}" data-am-ucheck required>{$xzsd.zsdmc}
+                                                    </label>
+                                                </li>
+    <!-- 二级知识点叶子节点 -->
+                                            {/if}
+                                        {/if}
+                                    {/volist}<!-- 二级知识点start -->
+                                    </ul>
+                                </li>
+
+                            {/if}
+                            {/volist}<!-- 一级知识点start -->
+                            </ul>
+                        </li>
+                    {/volist}<!-- 科目end -->
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <small style="display: inline;margin-left:50px;">*必填</small>
+    </div>
+  </div>
+<!-- 四级知识点添加   end -->
+
+                      <div class="am-form-group">
+                        <label for="user-name" class="am-u-sm-3 am-form-label">题干/Stem </label>
+                       <div class="am-u-sm-9">
+                          <textarea  name="tg" required rows="5" class="" placeholder="输入试题主干内容。"></textarea>
+                          <small>试题题干内容不可省略。</small> </div>
+                      </div>
+                      <div class="am-form-group">
+                                    <label for="user-phone" class="am-u-sm-3 am-form-label">答案 /<span class="tpl-form-line-small-title"></span> Key</label>
+                                    <div class="am-u-sm-9">
+                                        <select name="da" data-am-selected="{searchBox: 1}">
+                    										  <option value="1">正确</option>
+                    										  <option value="0">错误</option>
+                    										</select>
+                                    </div>
+						          </div>
+                      <div class="am-form-group">
+                        <label for="user-intro" class="am-u-sm-3 am-form-label">解析 / Analyse</label>
+                        <div class="am-u-sm-9">
+                          <textarea   name="jx" rows="5" class="" placeholder="输入题目解析。"></textarea>
+                          <small> 若无解析可以缺省。</small> </div>
+                      </div>
+
+                      <div class="am-form-group">
+                        <div class="am-u-sm-9 am-u-sm-push-3">
+                          <button type="submit" class="am-btn am-btn-primary">保存修改</button>
+                        </div>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+
+
+
+
+    	</div>
+    </div>
+
+
+    <script src="__ADMIN__/assets/js/jquery.min.js"></script>
+    <script src="__ADMIN__/assets/js/amazeui.min.js"></script>
+    <script src="__ADMIN__/assets/js/iscroll.js"></script>
+    <script src="__ADMIN__/assets/js/app.js"></script>
+</body>
+
+</html>

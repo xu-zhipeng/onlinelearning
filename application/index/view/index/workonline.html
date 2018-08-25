@@ -1,0 +1,207 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>商品页面</title>
+
+		<link href="__INDEX__/assets/css/admin.css" rel="stylesheet" type="text/css" />
+		<link href="__INDEX__/assets/css/amazeui.css" rel="stylesheet" type="text/css" />
+		<link href="__INDEX__/assets/css/demo.css" rel="stylesheet" type="text/css" />
+		<link type="text/css" href="__INDEX__/assets/css/optstyle.css" rel="stylesheet" />
+		<link type="text/css" href="__INDEX__/assets/css/style.css" rel="stylesheet" />
+		<link type="text/css" href="__INDEX__/usefornew/css/classify.css" rel="stylesheet" />
+		<link type="text/css" href="__INDEX__/usefornew/css/problems.css" rel="stylesheet" />
+
+		<script type="text/javascript" src="__INDEX__/assets/js/jquery-1.7.min.js"></script>
+		<script type="text/javascript" src="__INDEX__/assets/js/quick_links.js"></script>
+		<script type="text/javascript" src="__INDEX__/assets/js/amazeui.js"></script>
+		<script type="text/javascript" src="__INDEX__/assets/js/jquery.imagezoom.min.js"></script>
+		<script type="text/javascript" src="__INDEX__/assets/js/jquery.flexslider.js"></script>
+		<script type="text/javascript" src="__INDEX__/assets/js/list.js"></script>
+		<script type="text/javascript" src="__INDEX__/usefornew/js/problems.js"></script>
+
+	</head>
+
+	<body>
+
+
+		<!--顶部导航条 -->
+		{include file="public/top" /}
+
+
+				<!--分类-->
+		<div style="margin-top:10px;">    <!-- 调头部间距 -->
+			<div class="nav-table">
+					   <div class="long-title"><span class="all-goods">全部分类</span></div>
+					   <div class="nav-cont">
+							<ul>
+								<li class="index"><a href="{:url('index/index')}">首页</a></li>
+								<li class="qc"><a href="#">小升初备战</a></li>
+								<li class="qc"><a href="#">中考备战</a></li>
+								<li class="qc"><a href="#">高考备战</a></li>
+								<li class="qc last"><a href="#">其他</a></li>
+							</ul>
+						    <div class="nav-extra">
+						    	<i class="am-icon-user-secret am-icon-md nav-user"></i><b></b>我的福利
+						    	<i class="am-icon-angle-right" style="padding-left: 10px;"></i>
+						    </div>
+						</div>
+			</div>
+			<b class="line"></b>
+				<ol class="am-breadcrumb am-breadcrumb-slash">
+					<li><a href="{:url('index/index')}">首页</a></li>
+					<li><a href="#">分类</a></li>
+					<li class="am-active">内容</li>
+				</ol>
+				<script type="text/javascript">
+					$(function() {});
+					$(window).load(function() {
+						$('.flexslider').flexslider({
+							animation: "slide",
+							start: function(slider) {
+								$('body').removeClass('loading');
+							}
+						});
+					});
+				</script>
+
+
+
+				<div class="introduce">
+				<div class="browse">
+				    <div class="mc">
+					     <ul>
+					     	<div class="mt">
+					            <h2 style="margin-bottom:5px;">
+					            	<i class="am-icon-reorder" style="margin-left: -35px;"></i>
+						            &nbsp;&nbsp;
+						            考点检索
+					            </h2>
+				            </div>
+
+						      {volist name="knowledgepoint" id="kp"}
+					            {if condition="($kp.sjzsd eq 0)"}
+					            <div id="main{$kp.zsdbh}" style="text-align: left;padding-left: 60px; color:blue;cursor:pointer;" onclick="document.all.child{$kp.zsdbh}.style.display=(document.all.child{$kp.zsdbh}.style.display =='none')?'':'none'" >
+					            <hr style="height:30px;border:none;border-left:1px dashed #0066CC;width:10px;margin:-8px 0px -20px 5px" />
+					            <i class="am-icon-plus-square-o"></i>&nbsp;<hr style="height:10px;border:none;border-top:1px dashed #0066CC;width:30px;display:inline-block;margin-bottom: -5px;" />&nbsp;{$kp.zsdmc}
+								</div>
+
+								<div id="child{$kp.zsdbh}" style="display:none; text-align: left;padding-left:50px;">
+								{volist name="knowledgepoint" id="kp1"}
+								{if condition="($kp1.sjzsd eq $kp.zsdbh)"}
+								<hr style="height:30px;border:none;border-left:1px dashed #0066CC;width:10px;margin:-10px 0px -22px 15px" />
+								　     <a href="{:url('index/workonline',array('zsdbh'=>$kp1.zsdbh,'kmbh'=>$kmbh))}"><hr style="height:10px;border:none;border-top:1px dashed #0066CC;width:15px;display:inline-block;margin-bottom: -5px;" />
+								<i class="am-icon-minus-square-o"></i>&nbsp;<hr style="height:10px;border:none;border-top:1px dashed #0066CC;width:30px;display:inline-block;margin-bottom: -5px;" />&nbsp;{$kp1.zsdmc}</a><br>
+								{/if}
+								{/volist}
+								</div>
+								{/if}
+								{/volist}
+				      	</ul>
+				    </div>
+				</div>
+				<div class="introduceMain" style="margin-bottom: 10px;">
+				<div class="classify">
+					<div class="classify-subjects">
+						<p>
+							<b class="classify-font">学科：</b>
+							{volist name="course" id="co"}
+							<a class="classify-a" href="#" >{$co.kmmc}</a>
+							{/volist}
+						</p>
+					</div>
+					<div class="classify-subjects">
+						<p>
+							<b class="classify-font">题型：</b>
+							{volist name="types" id="tp"}
+							<a class="classify-a" href="#" >{$tp.type}</a>
+							{/volist}
+						</p>
+					</div>
+				</div>
+				<!-- introduce-->
+
+
+
+<!-- **************************从此开始编写表格 -->
+				<form action="{:url('index/checkanswer')}" method="post">
+					<!-- 利用隐藏的<input>把科目编号传过去。 -->
+				<input type="hidden" name="kmbh" value="{$kmbh}">
+				<div class="introduceMain" style="margin-top: 20px;">
+				<div class="problems">
+					<hr class="problems-line" >
+						{volist name="subjects" id="stem"}
+						{if condition="(max(strlen($stem.A),strlen($stem.B),strlen($stem.C),strlen($stem.D)) elt 15)"}
+						<div class="problems-content">
+							<div class="problems-stem">
+								{$stem.tg}
+							</div>
+							<table class="problems-table" cellpadding="0" cellspacing="0">
+								<tr>
+									<td class="problems-table-td"><input type="radio" name="{$stem.tmbh}" value="A">{$stem.A}</td><td class="problems-table-td"><input type="radio" name="{$stem.tmbh}" value="B">{$stem.B}</td><td class="problems-table-td"><input type="radio" name="{$stem.tmbh}" value="C">{$stem.C}</td><td class="problems-table-td"><input type="radio" name="{$stem.tmbh}" value="D">{$stem.D}</td>
+								</tr>
+							</table>
+							<hr class="problems-linebottom">
+						</div>
+						{elseif condition="(max(strlen($stem.A),strlen($stem.B),strlen($stem.C),strlen($stem.D)) gt 15) and (max(strlen($stem.A),strlen($stem.B),strlen($stem.C),strlen($stem.D)) elt 50) "}
+						<div class="problems-content">
+							<div class="problems-stem">
+								{$stem.tg}
+
+							</div>
+							<table class="problems-table" cellpadding="0" cellspacing="0">
+								<tr>
+									<td class="problems-table-td"><input type="radio" name="{$stem.tmbh}" value="A">{$stem.A}</td><td class="problems-table-td"><input type="radio" name="{$stem.tmbh}" value="B">{$stem.B}</td>
+								</tr>
+								<tr>
+									<td class="problems-table-td"><input type="radio" name="{$stem.tmbh}" value="C">{$stem.C}</td><td class="problems-table-td"><input type="radio" name="{$stem.tmbh}" value="D">{$stem.D}</td>
+								</tr>
+							</table>
+							<hr class="problems-linebottom">
+						</div>
+						{else/}
+						<div class="problems-content">
+							<div class="problems-stem">
+								{$stem.tg}
+							</div>
+							<table class="problems-table" cellpadding="0" cellspacing="0">
+								<tr>
+									<td class="problems-table-td"><input type="radio" name="{$stem.tmbh}" value="A">{$stem.A}</td>
+								</tr>
+								<tr>
+									<td class="problems-table-td"><input type="radio" name="{$stem.tmbh}" value="B">{$stem.B}</td>
+								</tr>
+								<tr>
+									<td class="problems-table-td"><input type="radio" name="{$stem.tmbh}" value="C">{$stem.C}</td>
+								</tr>
+								<tr>
+									<td class="problems-table-td"><input type="radio" name="{$stem.tmbh}" value="D">{$stem.D}</td>
+								</tr>
+							</table>
+							<hr class="problems-linebottom">
+						</div>
+						{/if}
+					{/volist}
+					<input type="submit"  value="提交">
+				</div>
+				</div>
+				</form>
+
+				</div>
+
+						<div class="clear"></div>
+
+						<!-- 底部 -->
+
+					{include file="public/bottom" /}
+				</div>
+
+		</div>
+			<!--菜单 -->
+			{include file="public/menu" /}
+
+	</body>
+
+</html>
