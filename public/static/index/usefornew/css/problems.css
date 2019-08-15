@@ -1,0 +1,54 @@
+.problems{
+	height:auto;
+	border-style:solid;
+  	border-width:1px;
+ 	border-color:#e0e0e0;
+}
+.problems-line{
+	height:2px;
+	border-top:2px solid #e0e0e0;
+	width: 96%;
+	margin-left: 2%; 
+	margin-top: 100px;
+}
+.pronblems-li{
+	display: inline-block;
+	margin: 0px;
+	padding: 0px;
+	left:10%;
+	text-align: left;
+}
+.problems-content{
+}
+.problems-stem{
+	margin-left: 25px;
+	text-align: left;
+}
+.problems-selecttwo{
+	float: left;
+}
+.problems-select{
+	display:inline-block; 
+	background: #3c3c3c;
+	margin-left: 100px;
+	text-align: left;
+}
+.problems-linebottom{
+	height:4px;
+	border-top: 1px dashed #006633;
+	margin-top: 20px;
+}
+.problems-table{
+	width: 100%;
+	margin-left: 50px;
+	margin-top: 20px;
+	word-wrap: :break-word;
+	word-break: break-all;
+	table-layout: fixed;
+}
+.problems-table-td{
+	width
+}
+.problems-table-td1{
+
+}
